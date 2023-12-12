@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Quotes' %}
+
+{% block body %}
+    <div class="row h-100 reset-mt" data-controller="admin--admin-table">
+        <div class="mt-5">
+            <button id="btn_menu_id" class="btn btn-primary btn_menu d-flex me-1" data-bs-toggle="modal" data-bs-target="#newElementModal"><i class="material-icons me-2">add</i><span>New</span></button>
+        </div>
+
+        {# new element modal #}
+        {%  include 'administration/modal_new_element.html.twig' with {
+            'title' : 'Quote',
+            'formComponent': component('AdmQuoteFormComponent')
+        }  %}
+
+        {# main page #}
+        <div id="nav_screen" class="col-md-12 col-sm-12 col-xl-12 mt-4">
+                {# the attribute style has been put here to hide table and display it once
+                loaded. For this we remove stryle attibute via app.js #}
+                <table class="admin-table ganti-datatable table" style="display:none">
+                    <thead>
+                    <tr>
+                        <th class="all">Lang</th>
+                        <th>Quote</th>
+                        <th class="all">Author</th>
+                        <th class="all">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for admquote in admquotes %}
+                        <tr data-id="{{ admquote.id }}">
+                            <td>{{ admquote.lang }}</td>
+                            <td>{{ admquote.quote }}</td>
+                            <td>{{ admquote.author }}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                    <a href="{{ path('admin_quote_edit', {'id' : admquote.id}) }}" class="btn btn-info btn-sm edit-button" role="button" data-bs-toggle="tooltip" data-controller="common--tooltip" data-bs-placement="top" title="Edit"><i class="material-icons">mode_edit</i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

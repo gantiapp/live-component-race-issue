@@ -1,0 +1,11 @@
+<div {{ attributes }}>
+    {{ form_start(form, { attr: {
+        'data-action': 'live#action',
+        'data-action-name': 'prevent|save'
+    }}) }}
+    {{ form_rest(form) }}
+{% if form.submit is not defined %}
+    <button type="submit" class="button-action{{ this.hasValidationErrors ? ' disabled' : '' }}">Submit</button>
+{% endif %}
+    {{ form_end(form) }}
+</div>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Ganti{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}?v=2" />
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+<div id="content" class="container-fluid mt-4">
+    <div class="greetings">
+        {% block errorpage %}{% endblock %}
+        <p class="h3 text-center"><a class="btn btn-primary" href="{{ path('homepage_index') }}">Homepage</a></p>
+    </div>
+
+</div>
+</body>

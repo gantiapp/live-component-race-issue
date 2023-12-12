@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% if pageTitle is not defined and notAdmin is not defined %}
+    {% set pageTitle %} Update {% endset %}
+{% else %}
+    {% if pageTitle is defined and notAdmin is defined %}
+        {% set pageTitle %} {{ pageTitle }} {% endset %}
+    {% else %}
+        {% if pageTitle is not defined and notAdmin is defined %}
+            {% set pageTitle %} Change password {% endset %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+{% block title pageTitle %}
+
+{% block body %}
+    <div class="card_home col-sm-10 col-md-10 col-lg-7 mx-auto mt-5">
+        <p class="card-title h1 text-center mb-4">{% if title is defined %} {{ title }}{% else %}Element update{% endif %}</p>
+        {# We display flash-message where notice is « error » #}
+        {{ include("common/flash_message.html.twig") }}
+        {{ component(formComponentName, componentProps) }}
+    </div>
+{% endblock %}

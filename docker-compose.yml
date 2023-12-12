@@ -1,0 +1,37 @@
+version: "3.5"
+services:
+  ganti-postgres:
+    image: postgres:13.3
+    container_name: ganti-postgres
+    environment:
+      - POSTGRES_DB=ganti
+      - POSTGRES_PASSWORD=postgres_pwd
+    ports:
+      - "5432:5432"
+    networks:
+      - ganti
+
+  ganti:
+    build:
+      context: .
+      target: dev
+    image: ganti-demo:latest
+    container_name: ganti-server
+    ports:
+      - '8000:80'
+    environment:
+      - DB_HOST=ganti-postgres
+      - DB_NAME=ganti
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres_pwd
+      - SF_APP_ENV=dev
+    volumes:
+      - ./:/var/www/html/ganti
+    depends_on:
+      - ganti-postgres
+    networks:
+      - ganti
+
+networks:
+  ganti:
+    name: ganti

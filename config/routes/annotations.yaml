@@ -1,0 +1,7 @@
+controller:
+    resource: ../../src/Controller
+    type: attribute
+
+admin_controller:
+    resource: ../../src/Administration/Controller
+    type: attribute

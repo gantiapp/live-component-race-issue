@@ -1,0 +1,35 @@
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    memcached_host: localhost
+    memcached_port: 11211
+    memcached_prefix: PHPSESSID_
+    memcached_expire: 14400
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means
+
+    session.memcached:
+        class: Memcached
+        arguments:
+            - '%memcached_prefix%'
+        calls:
+            - [ addServer, [ '%memcached_host%', '%memcached_port%' ] ]
+
+    session.handler.memcached:
+        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler
+        arguments: [ "@session.memcached", { prefix: '%memcached_prefix%', expiretime: '%memcached_expire%' } ]
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+
+    App\Administration\Controller\:
+        resource: '../src/Administration/Controller'
+        tags: ['controller.service_arguments']

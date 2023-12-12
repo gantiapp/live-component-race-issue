@@ -1,0 +1,238 @@
+@use "sass:math";
+
+.button-action {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .mt-5;
+  @extend .w-50;
+  @extend .text-uppercase;
+  @extend .fw-bold;
+  @extend .d-block;
+  @extend .ms-auto;
+  @extend .me-auto;
+  @extend .mb-auto;
+  @extend .mt-5;
+}
+
+
+.dataTables_scrollHead .table.dataTable {
+  margin-bottom: 0;
+}
+
+.dataTables_scrollBody .table.dataTable {
+  margin-bottom: 0;
+  margin-top: 0 !important;
+}
+
+.card {
+  border: 1px solid black;
+}
+
+.btn-info, .btn-warning {
+  color: #FFFFFF;
+
+  &:hover {
+    color: #FFFFFF;
+  }
+}
+
+.form-inline .form-group {
+  margin: 5px 5px;
+}
+
+table.dataTable {
+  margin: 0;
+}
+
+.ganti-datatable, .dashboard-table {
+  thead {
+    background-color: $table_header;
+    color: #FFFFFF;
+  }
+;
+
+  tbody {
+    background-color: #FFFFFF;
+  }
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0.25em 0.25em;
+}
+
+//body
+body {
+  background-color: white;
+  background-size: cover;
+}
+
+.title-light {
+  color: black;
+}
+
+.queryWrapper {
+  padding: $spacer
+}
+
+li.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+}
+
+.card_home {
+  @extend .card;
+  padding-top: math.div(20, 16) * $spacer;
+  padding-bottom: math.div(50, 16) * $spacer;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border: none;
+  border-radius: 0px;
+  box-shadow: 0 0 30px 0 rgba(45, 59, 69, 0.20);
+  background: rgba(255, 255, 255, .8);
+
+  .card-home__title {
+    text-align: center;
+    font-size: 21px;
+    width: 75%;
+    margin: 0 auto;
+
+    &::after {
+      content: "";
+      height: 1px;
+      width: 50px;
+      display: block;
+      background: $primaryColor;
+      margin: math.div(20, 16)  * $spacer auto;
+    }
+  }
+
+  .card-home__list {
+    .card-home__item {
+      color: #3c3c3c;
+      list-style: none;
+      margin-bottom: $spacer * 0.5;
+
+      &::before {
+        color: $primary;
+        content: "\2022";
+        font-size: 1rem;
+        padding-right: 1.1225em;
+        position: relative;
+        top: 0em;
+      }
+    }
+  }
+}
+
+table.dataTable {
+  thead {
+    .sorting, .sorting_asc, .sorting_desc {
+      background: none !important;
+    }
+  }
+
+  &:not(.admin-table) {
+    thead th {
+      padding-right: 4px !important;
+      padding-left: 4px !important;
+    }
+  }
+
+  &.admin-table {
+    thead th {
+      padding-right: 3px !important;
+      padding-left: 3px !important;
+    }
+  }
+}
+
+.dataTables_scrollHead {
+  position: sticky !important;
+  top: 0px;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 0px 5px 5px 0px rgba(82, 63, 105, 0.08);
+
+  th {
+    .showHideColumn {
+      visibility: hidden;
+      font-size: 20px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    > .th-container:hover {
+      .showHideColumn {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.dt-button.dropdown-item.buttons-columnVisibility:not(.active) {
+  text-decoration: line-through;
+}
+
+label.required {
+  font-weight: bold;
+
+  &::after {
+    content: ' *';
+    color: red;
+  }
+}
+
+input:required, select:required, textarea:required {
+  &::placeholder {
+    font-weight: bold;
+  }
+}
+
+.form-group {
+  @extend .form-group;
+  @extend .mb-3;
+}
+
+@media (min-width: 576px) {
+  .card-deck {
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .card-deck .card, .card-deck .card_home {
+    flex: 1 0 0;
+    margin-bottom: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+.table {
+  border: beige !important;
+}
+
+table:not([class]) > thead:not([class]) > tr > th:not([class]),
+table:not([class]) > tbody:not([class]) > tr > td:not([class]) {
+  border-width: 1px;
+}
+
+.form-floating > label {
+  color: grey;
+}
+
+input[style*="display: none"], input.d-none {
+  + label {
+    display: none;
+  }
+}

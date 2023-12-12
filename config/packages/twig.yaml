@@ -1,0 +1,16 @@
+twig:
+    paths: ['%kernel.project_dir%/templates']
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'bootstrap_5_layout.html.twig'
+    exception_controller: null
+    globals:
+        MAX_ROLES: 3
+        MAX_ARRAY_ITEMS: 3
+        MAX_STRING_LENGTH: 50
+    default_path: '%kernel.project_dir%/templates'
+
+when@test:
+    twig:
+        strict_variables: true

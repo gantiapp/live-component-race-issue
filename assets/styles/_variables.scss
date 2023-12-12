@@ -1,0 +1,59 @@
+$body-bg:#E8F1F6;
+$body-color:#000;
+$font-family-sans-serif: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+// FB545A
+
+$breadcrumb-bg:$body-bg;
+$breadcrumb-divider: quote(">");
+
+$nav-color:#242424;
+
+$dark:#293943;
+$table_header: #6c757d;
+
+//colors
+$btn-table-active-border-color:#2B61DD;
+$title-light-color:#8C9EA8;
+
+//
+$input-bg:lighten($body-bg,4%);
+$input-focus-bg:#fff;
+
+$primaryColor:#2D3B45;
+
+//Breadcrumb
+$breadcrumb-padding-y:              0.75rem;
+$breadcrumb-padding-x:              1rem;
+
+//Accordion
+$accordion-bg:                            #FFF;
+$accordion-border-color:                  #000;
+
+//Offcanvas
+$offcanvas-horizontal-width:        40vw;
+
+//Position utilities
+$position-values: (
+        0: 0,
+        5: 5%,
+        10: 10%,
+        15: 15%,
+        20: 20%,
+        25: 25%,
+        30: 30%,
+        35: 35%,
+        40: 40%,
+        45: 45%,
+        50: 50%,
+        55: 55%,
+        60: 60%,
+        65: 65%,
+        70: 70%,
+        75: 75%,
+        80: 80%,
+        85: 85%,
+        90: 90%,
+        95: 95%,
+        100: 100%
+);

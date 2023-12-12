@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Ganti{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.png') }}?v=2" />
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="content" class="container-fluid">
+            {% block body %}{% endblock %}
+        </div>
+        {{ encore_entry_script_tags('app') }}
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

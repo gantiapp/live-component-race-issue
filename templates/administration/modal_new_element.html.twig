@@ -1,0 +1,26 @@
+<div class="modal fade" id="newElementModal" tabindex="-1" aria-labelledby="newElementModalLabel" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center d-block">
+                <button type="button" class="btn-close position-absolute" style="right: 1rem;" data-bs-dismiss="modal" role aria-label="Close"></button>
+                <h4 class="modal-title">New {{ title }}</h4>
+            </div>
+            <div class="modal-body"{% if data_controller is defined %} data-controller="{{ data_controller }}"{% endif %}>
+                {{ formComponent|raw }}
+            </div>
+
+        {% if form_clone is defined %}
+            <div class="modal-content">
+                <div class="modal-header text-center d-block">
+                    <h4 class="modal-title text-center">Clone {{ title }}s</h4>
+                </div>
+                <div class="modal-body">
+                    {{ form_start(form_clone) }}
+                    {{ form_widget(form_clone) }}
+                    {{ form_end(form_clone) }}
+                </div>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</div>
